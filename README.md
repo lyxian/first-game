@@ -32,6 +32,7 @@ mongoose@6.6.3
 nodemon@2.0.20
 react@18.2.0
 react-dom@18.2.0
+react-router-dom@6.6.2
 jsonwebtoken@9.0.0
 --save-dev
 @babel/cli@7.19.3

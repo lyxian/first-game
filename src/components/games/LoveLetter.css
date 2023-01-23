@@ -1,0 +1,17 @@
+.game_loveletter {
+    display: flex;
+    flex-direction: column;
+    /* text-align: center; */
+}
+
+.game_content {
+    margin: auto;
+    border: 2px solid black;
+    width: 800px;
+    height: 500px;
+}
+
+.game_info_player_hand {
+    display: flex;
+    justify-content: space-evenly;
+}
