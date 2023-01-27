@@ -15,3 +15,44 @@
     display: flex;
     justify-content: space-evenly;
 }
+
+.game_info_room {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 30px;
+}
+
+.game_room_create {
+    width: 50%;
+}
+
+.game_room_join {
+    width: 50%;
+}
+
+.game_room_join:has(input) {
+    text-align: left;
+}
+
+.game_room_join:has(input) > button {
+    margin: 10px 5px 10px 10px;
+}
+
+.game_info_room > button {
+    position: relative;
+    left: 50%;
+}
+
+/* .input_span {
+    text-align: left;
+} */
+
+.input_info {
+    padding: 10px 10px 0 10px;
+    text-align: left;
+}
+
+.input_span > span {
+    font-weight: bold;
+}

@@ -6,13 +6,58 @@ class LoveLetter extends Component {
   constructor(props) {
     super(props);
     // this.firstNameInput = this.firstNameInput.bind(this);
-    // this.state = {
-    //   firstName: "",
-    //   lastName: "",
-    // }
+    // this.setRoomCode = this.setRoomCode.bind(this);
+    // this.setUsername = this.setUsername.bind(this);
+    this.state = {
+      joinRoom: false,
+      roomCode: "",
+      roomCodeInput: "",
+      username: "",
+    };
+  }
+
+  createRoom() {
+    alert("Room created");
+  }
+
+  joinRoom() {
+    this.setState({
+      joinRoom: !this.state.joinRoom,
+    });
+  }
+
+  join() {
+    if (this.state.username) {
+      if (this.state.roomCodeInput) {
+        this.setState({
+          roomCode: this.state.roomCodeInput,
+        });
+      } else {
+        alert("Please input room code before joining a room");
+      }
+    } else {
+      alert("Please input usename before joining a room");
+    }
+  }
+
+  setRoomCodeInput(e) {
+    this.setState({
+      roomCodeInput: e.target.value,
+    });
+  }
+
+  setUsername(e) {
+    this.setState({
+      username: e.target.value,
+    });
+  }
+
+  test() {
+    console.log(this.state);
   }
 
   render() {
+    const newPlayer = <div></div>;
     const playerHand = (
       <div className="game_info_player_hand">
         <Card
@@ -23,11 +68,58 @@ class LoveLetter extends Component {
         <Card name="card-2" value="4" />
       </div>
     );
-    return (
-      <div className="game_loveletter">
-        <h2>Love Letter</h2>
-        <div className="game_content">
-          <div className="game_info_match"></div>
+    const renderGame =
+      this.state.roomCode == "" ? (
+        <div className="game_info_room">
+          <div className="game_room_create">
+            <button onClick={() => this.createRoom()}>CREATE ROOM</button>
+          </div>
+          <div className="game_room_join">
+            {!this.state.joinRoom ? (
+              <button onClick={() => this.joinRoom()}>JOIN ROOM</button>
+            ) : (
+              <React.Fragment>
+                <div className="input_info">
+                  <div className="input_span">
+                    <span>Room Code</span>
+                  </div>
+                  <div>
+                    <input
+                      type="text"
+                      value={this.state.roomCodeInput}
+                      onChange={(e) => this.setRoomCodeInput(e)}
+                    />
+                  </div>
+                </div>
+                <div className="input_info">
+                  <div className="input_span">
+                    <span>Name</span>
+                  </div>
+                  <div>
+                    <input
+                      type="text"
+                      value={this.state.username}
+                      onChange={(e) => this.setUsername(e)}
+                    />
+                  </div>
+                </div>
+                <button onClick={() => this.join()}>JOIN</button>
+                <button onClick={() => this.joinRoom()}>BACK</button>
+              </React.Fragment>
+            )}
+          </div>
+          {/* <input
+        type="text"
+        name="username"
+        className="home__input"
+        value={userName}
+        onChange={(e) => setUserName(e.target.value)}
+        required
+        minLength={1}
+      /> */}
+        </div>
+      ) : (
+        <div className="game_info_match">
           <div className="game_info_player">
             {playerHand}
             <div className="game_info_player_move">
@@ -35,6 +127,11 @@ class LoveLetter extends Component {
             </div>
           </div>
         </div>
+      );
+    return (
+      <div className="game_loveletter">
+        <h2>Love Letter</h2>
+        <div className="game_content">{renderGame}</div>
         <a href="/">Back to Main</a>
       </div>
     );

@@ -7,6 +7,10 @@
     - choose create/join session
   - game
     - love letter
+      - room creation
+        - game start
+        - game join
+          - input `username`, `roomCode`
 - routes
 - layout
 
